@@ -1,5 +1,7 @@
 package com.epam.rd.autotasks.figures;
 
+import static java.lang.Math.sqrt;
+
 class Circle extends Figure {
     Point centr;
     double radius;
