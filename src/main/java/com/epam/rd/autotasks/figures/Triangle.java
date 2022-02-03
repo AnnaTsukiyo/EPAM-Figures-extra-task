@@ -5,6 +5,7 @@ class Triangle extends Figure {
     Point a;
     Point b;
     Point c;
+    double length1, length2, length3;
 
     public Triangle(Point a, Point b, Point c) throws IllegalArgumentException {
         if ((length1(a, b) >= length2(a, c) + length3(c, b)) || (length2(a, c) >= (length1(a, b) + length3(c, b))) || (length3(c, b)) >= length2(a, c) + (length1(a, b))) {
@@ -16,30 +17,42 @@ class Triangle extends Figure {
         }
     }
 
-    public Point centroid() {
-        double x = (a.getX() + b.getX() + c.getX()) / 3;
-        double y = (a.getY() + b.getY() + c.getY()) / 3;
-        return new Point (x, y);
+    double length1(Point a, Point b) {
+        double xDistanceSquare = Math.pow(a.getX() - b.getX(), 2);
+        double yDistanceSquare = Math.pow(a.getY() - b.getY(), 2);
+        return Math.sqrt(xDistanceSquare + yDistanceSquare);
     }
 
-    public static Point findIntersection(Point l1s, Point l1e, Point l2s, Point l2e) {
+    double length2(Point a, Point c) {
+        double xDistanceSquare = Math.pow(a.getX() - c.getX(), 2);
+        double yDistanceSquare = Math.pow(a.getY() - c.getY(), 2);
+        return Math.sqrt(xDistanceSquare + yDistanceSquare);
+    }
 
-        double a1 = l1e.getY() - l1s.getY();
-        double b1 = l1s.getX() - l1e.getX();
-        double c1 = a1 * l1s.getX() + b1 * l1s.getY();
-
-        double a2 = l2e.getY() - l2s.getY();
-        double b2 = l2s.getX() - l2e.getX();
-        double c2 = a2 * l2s.getX() + b2 * l2s.getY();
-
-        double delta = a1 * b2 - a2 * b1;
-        if (delta == 0) {
-            return null;
-        }
-        return new Point((b2 * c1 - b1 * c2) / delta, (a1 * c2 - a2 * c1) / delta);
+    double length3(Point c, Point b) {
+        double xDistanceSquare = Math.pow(c.getX() - b.getX(), 2);
+        double yDistanceSquare = Math.pow(c.getY() - b.getY(), 2);
+        return Math.sqrt(xDistanceSquare + yDistanceSquare);
     }
 
     @Override
-    public abstract boolean isTheSame(Figure figure){
+    public Point centroid() {
+        double xc = (a.getX() + b.getX() + c.getX()) / 3;
+        double yc = (a.getY() + b.getY() + c.getY()) / 3;
+        return new Point(xc, yc);
+    }
+    @Override
+    public boolean isTheSame(Figure figure) {
+        if (this == figure) {
+            return true;
+        }
+        if (!(figure instanceof Triangle)) {
+            return false;
+        }
+        if (figure == null) {
+            return false;
+        }
+        Triangle one = (Triangle) figure;
+        return (this.a == one.a) && (this.b == one.b) && (this.c == one.c);
     }
 }
