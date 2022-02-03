@@ -1,6 +1,6 @@
 package com.epam.rd.autotasks.figures;
 
-class Quadrilatera extends Figure {
+class Quadrilateral extends Figure {
     Point a;
     Point b;
     Point c;
@@ -81,10 +81,10 @@ class Quadrilatera extends Figure {
         if (!(figure instanceof Quadrilateral)) {
             return false;
         }
-        if (figure == null){
+        if (figure == null) {
             return false;
         }
         Quadrilateral one = (Quadrilateral) figure;
-        return (this.a == one.a) && (this.b == one.b) &&(this.c == one.c) &&(this.d == one.d);
+        return (this.a == one.a) && (this.b == one.b) && (this.c == one.c) && (this.d == one.d);
     }
 }

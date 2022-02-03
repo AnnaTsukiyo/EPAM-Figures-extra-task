@@ -17,11 +17,4 @@ class Point {
         return y;
     }
 
-    public boolean equals(Object obj) {
-        if (!(obj instanceof Point)) {
-            return false;
-        }
-        Point that = (Point) obj;
-        return (this.x == that.x && this.y == that.y);
-    }
 }
