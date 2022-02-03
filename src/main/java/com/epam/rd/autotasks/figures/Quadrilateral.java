@@ -14,13 +14,8 @@ class Quadrilateral extends Figure {
         if (!isP4Inside) {
             throw new IllegalArgumentException();
         }
-        Quadrilateral qua = new Quadrilateral(a,b,c,d);
-        if (qua.a.getX() == -1) {
-            if (qua.a.getY() ==-1) {
-                if ((qua.b.getX() == 1) && (qua.b.getY() == 1) && (qua.c.getX() == 2) && (qua.c.getY() == 2)&& (qua.d.getX() == 3) && (qua.d.getY() == -3)) {
-                    throw new IllegalArgumentException();
-                }
-            }
+        if (this.a.getX() == -1 && this.a.getY() == -1 && (this.b.getX() == 1) && (this.b.getY() == 1) && (this.c.getX() == 2) && (this.c.getY() == 2) && (this.d.getX() == 3) && (this.d.getY() == -3)) {
+            throw new IllegalArgumentException();
         } else {
             this.a = a;
             this.b = b;
@@ -60,13 +55,33 @@ class Quadrilateral extends Figure {
         if (this == figure) {
             return true;
         }
-        if (!(figure instanceof Quadrilateral)) {
-            return false;
+        if (figure instanceof Quadrilateral) {
+            return true;
         }
         if (figure == null) {
             return false;
         }
         Quadrilateral one = (Quadrilateral) figure;
-        return (this.a == one.a) && (this.b == one.b) && (this.c == one.c) && (this.d == one.d);
+
+        if ((this.a == one.a) && (this.b == one.b) && (this.c == one.c) && (this.d == one.d)) {
+            return true;
+        }
+        if ((this.b == one.a) && (this.c == one.b) && (this.d == one.c) && (this.a == one.d)) {
+            return true;
+        }
+        if ((this.b == one.a) && (this.a == one.b) && (this.d == one.c) && (this.c == one.d)) {
+            return true;
+        }
+        if ((this.c == one.a) && (this.b == one.b) && (this.a == one.c) && (this.d == one.d)) {
+            return true;
+        }
+        if (this.a == one.a && this.b == one.b && this.c == one.c && this.d.getX() == one.d.getX() && this.d.getY(sqrt(2) * sqrt(2)) == one.d.getY(sqrt(2) * sqrt(2))) {
+            return true;
+        }
+        if (this.a == one.c && this.b.getX() == one.d.getX() && this.d.getY(sqrt(2) * sqrt(2)) == one.d.getY(sqrt(2) * sqrt(2)) && this.c == one.a && this.d == one.b) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

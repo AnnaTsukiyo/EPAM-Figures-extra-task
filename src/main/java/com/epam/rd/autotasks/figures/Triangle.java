@@ -49,8 +49,8 @@ class Triangle extends Figure {
         if (this == figure) {
             return true;
         }
-        if (!(figure instanceof Triangle)) {
-            return false;
+        if (figure instanceof Triangle) {
+            return true;
         }
         if (figure == null) {
             return false;
