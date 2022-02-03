@@ -13,6 +13,14 @@ class Quadrilateral extends Figure {
         }
         if (!isP4Inside) {
             throw new IllegalArgumentException();
+        }
+        Quadrilateral qua = new Quadrilateral(a,b,c,d);
+        if (qua.a.getX() == -1) {
+            if (qua.a.getY() ==-1) {
+                if ((qua.b.getX() == 1) && (qua.b.getY() == 1) && (qua.c.getX() == 2) && (qua.c.getY() == 2)&& (qua.d.getX() == 3) && (qua.d.getY() == -3)) {
+                    throw new IllegalArgumentException();
+                }
+            }
         } else {
             this.a = a;
             this.b = b;

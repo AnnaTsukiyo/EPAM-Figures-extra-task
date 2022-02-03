@@ -8,6 +8,9 @@ class Triangle extends Figure {
     double length1, length2, length3;
 
     public Triangle(Point a, Point b, Point c) throws IllegalArgumentException {
+        if (a == null || b == null || c == null) {
+            throw new IllegalArgumentException();
+        }
         if ((length1(a, b) >= length2(a, c) + length3(c, b)) || (length2(a, c) >= (length1(a, b) + length3(c, b))) || (length3(c, b)) >= length2(a, c) + (length1(a, b))) {
             throw new IllegalArgumentException();
         } else {
