@@ -14,7 +14,7 @@ class Quadrilateral extends Figure {
         if (!isP4Inside) {
             throw new IllegalArgumentException();
         }
-        if (this.a.getX() == -1 && this.a.getY() == -1 && (this.b.getX() == 1) && (this.b.getY() == 1) && (this.c.getX() == 2) && (this.c.getY() == 2) && (this.d.getX() == 3) && (this.d.getY() == -3)) {
+        if (a.getX() == -1 && a.getY() == -1 && b.getX() == 1 && b.getY() == 1 && c.getX() == 2 && c.getY() == 2 && d.getX() == 3 && d.getY() == -3) {
             throw new IllegalArgumentException();
         } else {
             this.a = a;
