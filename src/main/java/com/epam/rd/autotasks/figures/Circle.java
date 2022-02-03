@@ -32,9 +32,6 @@ class Circle extends Figure {
         if (figure instanceof Circle) {
             return true;
         }
-        if (!figure instanceof Circle) {
-            return false;
-        }
         Circle one = (Circle) figure;
         if ((this.centr == one.centr) && (this.radius == one.radius)) {
             return true;
