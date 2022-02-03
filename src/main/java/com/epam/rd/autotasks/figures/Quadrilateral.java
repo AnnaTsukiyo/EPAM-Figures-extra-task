@@ -1,7 +1,5 @@
 package com.epam.rd.autotasks.figures;
 
-import static java.lang.Math.sqrt;
-
 class Quadrilateral extends Figure {
     Point a;
     Point b;
@@ -52,6 +50,7 @@ class Quadrilateral extends Figure {
         return new Point((b2 * c1 - b1 * c2) / delta, (a1 * c2 - a2 * c1) / delta);
     }
 
+
     @Override
     public boolean isTheSame(Figure figure) {
         if (this == figure) {
@@ -75,12 +74,6 @@ class Quadrilateral extends Figure {
             return true;
         }
         if ((this.c == one.a) && (this.b == one.b) && (this.a == one.c) && (this.d == one.d)) {
-            return true;
-        }
-        if (this.a == one.a && this.b == one.b && this.c == one.c && this.d.getX() == one.d.getX() && this.d.getY(sqrt(2) * sqrt(2)) == one.d.getY(sqrt(2) * sqrt(2))) {
-            return true;
-        }
-        if (this.a == one.c && this.b.getX() == one.d.getX() && this.d.getY(sqrt(2) * sqrt(2)) == one.d.getY(sqrt(2) * sqrt(2)) && this.c == one.a && this.d == one.b) {
             return true;
         } else {
             return false;

@@ -19,7 +19,6 @@ class Triangle extends Figure {
             this.c = c;
         }
     }
-
     double length1(Point a, Point b) {
         double xDistanceSquare = Math.pow(a.getX() - b.getX(), 2);
         double yDistanceSquare = Math.pow(a.getY() - b.getY(), 2);
@@ -44,6 +43,7 @@ class Triangle extends Figure {
         double yc = (a.getY() + b.getY() + c.getY()) / 3;
         return new Point(xc, yc);
     }
+
     @Override
     public boolean isTheSame(Figure figure) {
         if (this == figure) {
