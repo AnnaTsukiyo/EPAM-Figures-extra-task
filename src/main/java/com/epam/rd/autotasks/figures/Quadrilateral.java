@@ -21,32 +21,6 @@ class Quadrilateral extends Figure {
         }
     }
 
-    public double area() {
-        boolean areaIs;
-        Triangle tr;
-        Double s1, s2, s3, s4, delta;
-
-        tr = new Triangle(a, b, c);
-        s1 = tr.area();
-
-        tr = new Triangle(a, b, d);
-        s2 = tr.area();
-        tr = new Triangle(a, c, d);
-        s3 = tr.area();
-        tr = new Triangle(b, c, d);
-        s4 = tr.area();
-
-        delta = 1.0E-10;   // нужно учитывать погрешность вычисления
-        isP4Inside = Math.abs(s1 - (s2 + s3 + s4)) < delta;
-
-        if (!isP4Inside) {// НЕвыпуклый
-            return s1 + s3;
-        } else {             // выпуклый
-            return s2 + s4;
-        }
-    }
-
-
     @Override
     public Point centroid() {
         Point gA = new Triangle(b, c, d).centroid();
