@@ -13,11 +13,12 @@ class Quadrilatera extends Figure {
         }
         if (!isP4Inside) {
             throw new IllegalArgumentException();
+        } else {
+            this.a = a;
+            this.b = b;
+            this.c = c;
+            this.d = d;
         }
-        this.a = a;
-        this.b = b;
-        this.c = c;
-        this.d = d;
     }
 
     public double area() {
@@ -45,11 +46,13 @@ class Quadrilatera extends Figure {
         }
     }
 
+
+    @Override
     public Point centroid() {
-        Point gA = new Triangle(b, c, d).centroidTriangle();
-        Point gB = new Triangle(a, c, d).centroidTriangle();
-        Point gC = new Triangle(a, b, b).centroidTriangle();
-        Point gD = new Triangle(a, b, c).centroidTriangle();
+        Point gA = new Triangle(b, c, d).centroid();
+        Point gB = new Triangle(a, c, d).centroid();
+        Point gC = new Triangle(a, b, b).centroid();
+        Point gD = new Triangle(a, b, c).centroid();
         return findIntersection(gA, gC, gB, gD);
     }
 
@@ -69,8 +72,19 @@ class Quadrilatera extends Figure {
         }
         return new Point((b2 * c1 - b1 * c2) / delta, (a1 * c2 - a2 * c1) / delta);
     }
-    @Override
-    public abstract boolean isTheSame(Figure figure){
 
+    @Override
+    public boolean isTheSame(Figure figure) {
+        if (this == figure) {
+            return true;
+        }
+        if (!(figure instanceof Quadrilateral)) {
+            return false;
+        }
+        if (figure == null){
+            return false;
+        }
+        Quadrilateral one = (Quadrilateral) figure;
+        return (this.a == one.a) && (this.b == one.b) &&(this.c == one.c) &&(this.d == one.d);
     }
 }
