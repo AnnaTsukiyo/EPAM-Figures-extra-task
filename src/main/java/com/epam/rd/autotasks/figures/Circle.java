@@ -17,14 +17,26 @@ class Circle extends Figure {
     }
 
     public double area() {
-        return Math.PI * Math.pow(radius,2);
+        return Math.PI * Math.pow(radius, 2);
     }
+
     @Override
     public Point centroid() {
         return centr;
     }
-    @Override
-    public abstract boolean isTheSame(Figure figure){
 
+    @Override
+    public boolean isTheSame(Figure figure) {
+        if (figure == null){
+            return false;
+        }
+        if (this == figure) {
+            return true;
+        }
+        if (!(figure instanceof Circle)) {
+            return false;
+        }
+        Circle one = (Circle) figure;
+        return (this.centr == one.centr) && (this.radius == one.radius);
     }
 }
